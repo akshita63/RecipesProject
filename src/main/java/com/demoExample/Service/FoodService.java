@@ -14,14 +14,26 @@ import com.demoExample.Repos.FoodDishRepo;
 @Service
 public class FoodService {
 	
+	
+	
+	//
+	
 	@Autowired
 	private FoodDishRepo foodDishRepo;
 
+	
+	
+	
+	//this is used to save the foodDish
 	public FoodDishes save(FoodDishes foodDish) {
 		// TODO Auto-generated method stub
 		return foodDishRepo.save(foodDish);
 	}
 
+	
+	
+	
+	//get APi for fetching the food item
 	public List<FoodDishes> getFood() {
 		// TODO Auto-generated method stub
 		return foodDishRepo.findAll();
@@ -29,6 +41,8 @@ public class FoodService {
 
 	
 
+	
+	//get api for fetching the food item by its id
 	
 	public FoodDishes getFoodByid(long id) {
 		// TODO Auto-generated method stub

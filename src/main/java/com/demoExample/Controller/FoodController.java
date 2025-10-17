@@ -57,20 +57,30 @@ public class FoodController {
 	
 	
 	//get specific food items
-	@GetMapping("/getFood/{id}")
+//	@GetMapping("/getFood/{id}")
+//	
+//	
+//	//I was manually handline the exception using try catch
+//	public ResponseEntity<?> getFoodItems(@PathVariable  long id){
+//		try {
+//			FoodDishes food=foodService.getFoodByid(id);
+//			return ResponseEntity.ok(food);
+//			
+//		}
+//		catch (NoSuchElementException e) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                                 .body(Map.of(("error"),e.getMessage()));
+//        }
+//		
 	
-	
-	
-	public ResponseEntity<?> getFoodItems(@PathVariable  long id){
-		try {
-			FoodDishes food=foodService.getFoodByid(id);
-			return ResponseEntity.ok(food);
-			
-		}
-		catch (NoSuchElementException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                                 .body(Map.of(("error"),e.getMessage()));
-        }
+	@GetMapping("/Food/{id}")
+	public ResponseEntity<?> getFood(@PathVariable long id){
+		
+		
+		//here I have not used any try catch to handle exception  
+		FoodDishes food=foodService.getFoodByid(id);
+		
+		return ResponseEntity.ok(food);
 		
 		
 		
