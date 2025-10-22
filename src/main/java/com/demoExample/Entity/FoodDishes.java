@@ -27,8 +27,8 @@ public class FoodDishes {
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(long i) {
+		this.id = i;
 	}
 
 

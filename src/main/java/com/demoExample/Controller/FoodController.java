@@ -23,7 +23,14 @@ import com.demoExample.Service.FoodService;
 public class FoodController {
 	
 	@Autowired
-	private FoodService foodService;
+	//private FoodService foodService;
+	
+	
+	private  final FoodService foodService;
+	
+	public FoodController(FoodService foodService) {
+		this.foodService=foodService;
+	}
 	
 	
 	
@@ -31,8 +38,13 @@ public class FoodController {
 	
 	//create an api for posting food data
 	
+	
+	
+	//this is used for adding data to the db
 	@PostMapping("/foodapp")
 	public ResponseEntity<FoodDishes> addFood(@RequestBody FoodDishes foodDish){
+		
+		
 		
 		FoodDishes f1=foodService.save(foodDish);
 		
@@ -71,6 +83,9 @@ public class FoodController {
 //            return ResponseEntity.status(HttpStatus.NOT_FOUND)
 //                                 .body(Map.of(("error"),e.getMessage()));
 //        }
+	
+	
+
 //		
 	
 	@GetMapping("/Food/{id}")
