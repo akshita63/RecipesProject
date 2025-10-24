@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import org.jboss.logging.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,8 +19,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	
+	private final Logger logger=Logger.getLogger( GlobalExceptionHandler.class);
+	
 	@ExceptionHandler(NoSuchElementException.class)
 	public ResponseEntity<?> handleNoSuchelement(NoSuchElementException e){
+		
+		
+		//give a logger here
+		
+		
 		
 		Map<String,Object> error=new HashMap();
 		

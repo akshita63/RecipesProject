@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,11 +22,16 @@ import com.demoExample.Service.FoodService;
 
 
 
+//if you want to give access to frontend URL , you have to specify the path here
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 public class FoodController {
 	
 	@Autowired
 	//private FoodService foodService;
+	
+	
+	private static final Logger logger=LoggerFactory.getLogger(FoodController.class);
 	
 	
 	private  final FoodService foodService;
@@ -44,13 +52,22 @@ public class FoodController {
 	@PostMapping("/foodapp")
 	public ResponseEntity<FoodDishes> addFood(@RequestBody FoodDishes foodDish){
 		
+		logger.info("received request to add food ");
+		
 		
 		
 		FoodDishes f1=foodService.save(foodDish);
 		
+		logger.info("saved food item :{}",f1.getId() );
+		
+		logger.info("saved entities : {}", f1.getDescription());
+		
 		return ResponseEntity.ok(f1);
 		
 	}
+	
+	
+	
 	
 	
 	

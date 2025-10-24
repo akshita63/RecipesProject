@@ -1,5 +1,9 @@
 package com.demoExample.serviceTest;
 
+import java.util.Arrays;
+import java.util.List;
+
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,7 +38,7 @@ public class ServiceTest {
 	public void addProduct() {
 		
 		
-		
+		//here I am manually creating the object of FoodDishes and testing it.
 		
 		System.out.println("my first unit test");
 		FoodDishes f=new FoodDishes();
@@ -56,4 +60,40 @@ public class ServiceTest {
 		
 		
 	}
+	
+	
+	
+	@Test
+	public void getFoodTest(){
+		
+		FoodDishes f1=new FoodDishes();
+		
+		f1.setId(3);
+		f1.setDescription("sweet");
+		f1.setCategory("sweetitem");
+		
+		FoodDishes f2=new FoodDishes();
+		
+		f2.setId(4);
+		f2.setDescription("hot item");
+		f2.setCategory("namkeen");
+		
+		
+		List<FoodDishes> mocked=Arrays.asList(f1,f2);
+		
+		
+		
+		Mockito.when(foodDishRepo.findAll()).thenReturn(mocked);
+		
+		List<FoodDishes> output=foodService.getFood();
+		
+		Assertions.assertEquals("hot item",output.get(1).getDescription());
+	}
+	
+	
+	
+	
+	
+	
+	
 }
