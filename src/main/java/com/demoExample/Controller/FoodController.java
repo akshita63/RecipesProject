@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demoExample.DTO.foodDishDto;
 import com.demoExample.Entity.FoodDishes;
 import com.demoExample.Service.FoodService;
 
@@ -50,7 +51,7 @@ public class FoodController {
 	
 	//this is used for adding data to the db
 	@PostMapping("/foodapp")
-	public ResponseEntity<FoodDishes> addFood(@RequestBody FoodDishes foodDish){
+	public ResponseEntity<foodDishDto> addFood(@RequestBody FoodDishes foodDish){
 		
 		logger.info("received request to add food ");
 		
@@ -61,8 +62,9 @@ public class FoodController {
 		logger.info("saved food item :{}",f1.getId() );
 		
 		logger.info("saved entities : {}", f1.getDescription());
+		foodDishDto f2= foodService.convertToFoodDto(foodDish);
 		
-		return ResponseEntity.ok(f1);
+		return ResponseEntity.ok(f2);
 		
 	}
 	

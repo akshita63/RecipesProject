@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
+import com.demoExample.DTO.foodDishDto;
 import com.demoExample.Entity.FoodDishes;
 import com.demoExample.Repos.FoodDishRepo;
 
@@ -20,6 +20,18 @@ public class FoodService {
 	
 	@Autowired
 	private FoodDishRepo foodDishRepo;
+	
+	
+	
+	public foodDishDto convertToFoodDto(FoodDishes food) {
+		
+		
+		 foodDishDto  f1=new foodDishDto();
+		 f1.setName(food.getName());
+		 f1.setDescription(food.getDescription());
+		 
+		 return f1;
+	}
 
 	
 	
