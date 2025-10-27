@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 //this is the entuity class
 
@@ -14,8 +16,14 @@ public class FoodDishes {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	
 	private String name;
+	
+	
+    @NotBlank(message="description is needed")
 	private String description;
+    
 	private String category;
 	
 	

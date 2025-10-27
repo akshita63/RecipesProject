@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +39,17 @@ public class FoodController {
 	
 	private  final FoodService foodService;
 	
+	
+	
+	//constructor injection
+	
 	public FoodController(FoodService foodService) {
 		this.foodService=foodService;
 	}
+	
+	
+	
+	
 	
 	
 	
@@ -51,7 +61,7 @@ public class FoodController {
 	
 	//this is used for adding data to the db
 	@PostMapping("/foodapp")
-	public ResponseEntity<foodDishDto> addFood(@RequestBody FoodDishes foodDish){
+	public ResponseEntity<foodDishDto> addFood(@Valid @RequestBody FoodDishes foodDish){
 		
 		logger.info("received request to add food ");
 		
@@ -62,6 +72,9 @@ public class FoodController {
 		logger.info("saved food item :{}",f1.getId() );
 		
 		logger.info("saved entities : {}", f1.getDescription());
+		
+		
+		//here I am returning the 
 		foodDishDto f2= foodService.convertToFoodDto(foodDish);
 		
 		return ResponseEntity.ok(f2);

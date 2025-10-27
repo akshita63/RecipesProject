@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.demoExample.DTO.foodDishDto;
 import com.demoExample.Entity.FoodDishes;
+import com.demoExample.Exception.ResourceNotFoundException;
 import com.demoExample.Repos.FoodDishRepo;
 
 @Service
@@ -59,7 +60,7 @@ public class FoodService {
 	public FoodDishes getFoodByid(long id) {
 		// TODO Auto-generated method stub
 		 return foodDishRepo.findById(id).
-				 orElseThrow(() -> new NoSuchElementException("Food item not found with ID: " + id));
+				 orElseThrow(() -> new ResourceNotFoundException("Food item not found with ID: " + id));
 		 
 		 
 		 
@@ -71,6 +72,7 @@ public class FoodService {
 	
 	
 	//here you can write your own APIs
+	
 	
 
 }

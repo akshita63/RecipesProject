@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.demoExample.Exception.ResourceNotFoundException;
+
 
 //there is a use of @ControllerAdvice annotation and we can take the help of it
 
@@ -21,8 +23,8 @@ public class GlobalExceptionHandler {
 	
 	private final Logger logger=Logger.getLogger( GlobalExceptionHandler.class);
 	
-	@ExceptionHandler(NoSuchElementException.class)
-	public ResponseEntity<?> handleNoSuchelement(NoSuchElementException e){
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<?> handleNoSuchelement(ResourceNotFoundException e){
 		
 		
 		//give a logger here

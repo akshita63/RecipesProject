@@ -1,9 +1,14 @@
 package com.demoExample.DTO;
 
+import javax.validation.constraints.NotBlank;
+
+
 public class foodDishDto {
 	
 	private String name;
 	
+	
+	@NotBlank(message="description should not be null")
 	private String description;
 
 	public String getName() {
