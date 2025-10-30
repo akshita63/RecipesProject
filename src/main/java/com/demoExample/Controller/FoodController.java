@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ import com.demoExample.Service.FoodService;
 
 
 
-//if you want to give access to frontend URL , you have to specify the path here
+//if you want to give access to frontend URL , you have to specify the path here and cross origin is the annotation being used
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 public class FoodController {
@@ -97,6 +98,14 @@ public class FoodController {
 		
 		
 		
+	}
+	
+	
+	@DeleteMapping("/food/{id}")
+	public ResponseEntity<?> deleteFood(@PathVariable long id) {
+		
+		foodService.deleteItem(id);
+		return ResponseEntity.ok("item deleted successfully");
 	}
 	
 	

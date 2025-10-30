@@ -3,6 +3,8 @@ package com.demoExample.Service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -63,6 +65,24 @@ public class FoodService {
 				 orElseThrow(() -> new ResourceNotFoundException("Food item not found with ID: " + id));
 		 
 		 
+		 
+		 
+		
+	}
+
+
+	
+	
+
+   //api to delete an item from my db
+	public void deleteItem(long id) {
+		// TODO Auto-generated method stub
+		
+		if(!foodDishRepo.existsById(id)) {
+			throw new EntityNotFoundException("Food item with id " + id + " not found");
+		}
+		 foodDishRepo.deleteById(id);
+	
 		 
 		 
 		 

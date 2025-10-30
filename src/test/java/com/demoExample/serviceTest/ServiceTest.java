@@ -18,6 +18,8 @@ import com.demoExample.Repos.FoodDishRepo;
 import com.demoExample.Service.FoodService;
 
 
+//this is a simple junit testing test class
+
 @ExtendWith(MockitoExtension.class)
 public class ServiceTest {
 	
@@ -68,6 +70,9 @@ public class ServiceTest {
 		
 		FoodDishes f1=new FoodDishes();
 		
+		
+		
+		//here I am setting the data manually and this is used for unit testing
 		f1.setId(3);
 		f1.setDescription("sweet");
 		f1.setCategory("sweetitem");
